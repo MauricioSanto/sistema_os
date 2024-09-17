@@ -38,7 +38,7 @@
             <input type="date" name="data_final">
 
             <label>VALOR:</label>
-            <input type="numeric" name="valor">
+            <input type="number" name="valor">
 
             <label for="">STATUS:</label>
             <select name="status" id="status">

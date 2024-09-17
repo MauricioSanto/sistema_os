@@ -47,7 +47,7 @@ class OrdemServicoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrdemServico $ordemServico, $id)
+    public function show(OrdemServico $ordemservicos, $id)
     {
         OrdemServico::with('cliente','servico','Empresa')->find($id);
         return view('ordem_servicos.show', compact('ordemservico'));
@@ -58,13 +58,16 @@ class OrdemServicoController extends Controller
      */
     public function edit($id)
     {
-        $ordemServico = OrdemServico::find($id); // busca a ordem de serviço a ser editada
+        $ordemservicos = OrdemServico::find($id); // busca a ordem de serviço a ser editada
+        if (!$ordemservicos) {
+            return redirect()->route('ordem_servicos.index')->with('error', 'Ordem de serviço não encontrada.');
+        }
         $empresas = Empresa::all(); // Buscando todas as empresas
         $clientes = Cliente::all(); // Buscando todos os clientes
         $servicos = Servico::all(); // Buscando todos os serviços
     
         // Passando os dados para a view
-        return view('ordem_servicos.editar', compact('servicos', 'empresas', 'clientes'));
+        return view('ordem_servicos.editar', compact('servicos', 'empresas', 'clientes','ordemservicos'));
     }
 
     /**
@@ -84,21 +87,21 @@ class OrdemServicoController extends Controller
             'status'=>'boolean'
         
         ]);
-        $ordemServico = OrdemServico::find($id);
+        $ordemservicos = OrdemServico::find($id);
     
-        if (!$ordemServico) {
+        if (!$ordemservicos) {
             return redirect()->back()->with('error', 'Ordem de serviço não encontrada.');
         }
     
-        $ordemServico->servico_id = $request->input('servico_id');
-        $ordemServico->cliente_id = $request->input('cliente_id');
-        $ordemServico->empresa_id = $request->input('empresa_id');
-        $ordemServico->data_inicial = $request->input('data_inicial');
-        $ordemServico->data_final = $request->input('data_final');
-        $ordemServico->valor = $request->input('valor');
-        $ordemServico->status = $request->input('status');
+        $ordemservicos->servico_id = $request->input('servico_id');
+        $ordemservicos->cliente_id = $request->input('cliente_id');
+        $ordemservicos->empresa_id = $request->input('empresa_id');
+        $ordemservicos->data_inicial = $request->input('data_inicial');
+        $ordemservicos->data_final = $request->input('data_final');
+        $ordemservicos->valor = $request->input('valor');
+        $ordemservicos->status = $request->input('status');
         
-        $ordemServico->save();
+        $ordemservicos->save();
     
         return redirect()->route('ordem_servicos.index')->with('success', 'Ordem de serviço atualizada com sucesso.');
         
