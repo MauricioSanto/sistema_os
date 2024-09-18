@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Lista de Ordem de Serviço</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
     </head>
     <body>
         <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
@@ -62,14 +64,14 @@
                     
                     <tr>
                         <th scope="row">{{ $ordemservico->id }}</th>
-                        <td>{{ $ordemservico->servico->tipo }}</td>
-                        <td>{{ $ordemservico->cliente->nome }}</td>
-                        <td>{{ $ordemservico->empresa->razao_social }}</td>
-                        <td>{{ $ordemservico->data_inicial }}</td>
-                        <td>{{ $ordemservico->data_final }}</td>
-                        <td>{{ $ordemservico->valor }}</td>
+                        <td>{{ $ordemservico->servico ? $ordemservico->servico->tipo : 'N/A' }}</td>
+                        <td>{{ $ordemservico->cliente ? $ordemservico->cliente->nome : 'N/A' }}</td>
+                        <td>{{ $ordemservico->empresa ? $ordemservico->empresa->razao_social : 'N/A' }}</td>
+                        <td>{{ $ordemservico-> data_inicial }}</td>
+                        <td>{{ $ordemservico-> data_final }}</td>
+                        <td>{{ $ordemservico-> valor }}</td>
                         <td>
-                            @if ($ordemservico->status)
+                            @if ($ordemservico-> status)
                                 Concluido
                             @else
                                 Em andamento

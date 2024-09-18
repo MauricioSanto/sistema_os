@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Categorias</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
     </head>
     <body>
         <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
@@ -30,11 +32,17 @@
                         <th scope="row">{{ $categoria->id }}</th>
                         <td>{{ $categoria->tipo }}</td>
                         <td>
-                            <button><a href="{{ route('categorias.edit', $categoria->id) }}">Editar</a></button>
+                            <a href="{{ route('categorias.edit', $categoria->id) }}">
+                            <div>
+                                <img src='https://img.icons8.com/?size=100&id=8rqSU6umQzpk&format=png&color=000000' width='35' height='35'>Editar</img>
+                            </div>
+                            </a>
                             <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Excluir</button>
+                                <button type="submit">
+                                        <img src='https://img.icons8.com/?size=100&id=57061&format=png&color=000000' width='35' height='35'>Excluir</img>
+                                    </button>
                             </form>
                         </td>
                     </tr>

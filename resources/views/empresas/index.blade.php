@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Lista de Empresas</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
     </head>
     <body>
         <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
