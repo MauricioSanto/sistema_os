@@ -101,4 +101,13 @@ class ServicoController extends Controller
         $servico->delete();
         return redirect()->route('servicos.index')->with('success', 'Serviço removido com sucesso.');
     }
+
+    public function atualizarStatus (Request $request,$id)
+    {
+        $servico = Servico::find($id);
+        $servico->status = true;
+        $servico->save();
+
+        return redirect()->route('servicos.index');
+    }
 }

@@ -6,7 +6,7 @@
     
     </head>
     <body>
-        <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
+        <button><a href= "{{ route('pagina_inicial') }}">Página Inicial</a></button>
         <h1>Empresas</h1>
         <form action="{{ route('empresas.index') }}" method="post">
           @csrf
@@ -49,11 +49,19 @@
                         <td>{{ $empresa->telefone }}</td>
                         <td>{{ $empresa->cep }}</td>
                         <td>
-                            <button><a href="{{ route('empresas.edit', $empresa->id) }}">Editar</a></button>
+                            <button>
+                                <a href="{{ route('empresas.edit', $empresa->id) }}">
+                                    <div>
+                                        <img src='https://img.icons8.com/?size=100&id=8rqSU6umQzpk&format=png&color=000000' width='35' height='35'>Editar</img>
+                                    </div>
+                                </a>
+                            </button>
                             <form action="{{ route('empresas.destroy', $empresa->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Excluir</button>
+                                <button type="submit">
+                                    <img src='https://img.icons8.com/?size=100&id=57061&format=png&color=000000' width='35' height='35'>Excluir</img>
+                                </button>
                             </form>
                         </td>
                     </tr>

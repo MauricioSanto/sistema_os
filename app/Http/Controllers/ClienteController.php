@@ -133,5 +133,12 @@ class ClienteController extends Controller
         $cliente->delete();
         return redirect()->route('clientes.index')->with('success', 'Cliente removido com sucesso.');
     }
-    
+    public function atualizarStatus (Request $request,$id)
+        {
+            $cliente = Cliente::find($id);
+            $cliente->status = true;
+            $cliente->save();
+
+            return redirect()->route('clientes.index');
+        }
 }

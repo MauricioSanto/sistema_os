@@ -6,7 +6,7 @@
     
     </head>
     <body>
-        <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
+        <button><a href= "{{ route('pagina_inicial') }}">Página Inicial</a></button>
         <h1>Serviços</h1>
         <form action="{{ route('servicos.index') }}" method="post">
           @csrf
@@ -66,11 +66,26 @@
                             @endif
                         </td>
                         <td>
-                            <button><a href="{{ route('servicos.edit', $servico->id) }}">Editar</a></button>
+                            <button>
+                                <a href="{{ route('servicos.edit', $servico->id) }}">
+                                    <div>
+                                        <img src='https://img.icons8.com/?size=100&id=8rqSU6umQzpk&format=png&color=000000' width='35' height='35'>Editar</img>
+                                    </div>
+                                </a>
+                            </button>
                             <form action="{{ route('servicos.destroy', $servico->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Excluir</button>
+                                <button type="submit">
+                                    <img src='https://img.icons8.com/?size=100&id=57061&format=png&color=000000' width='35' height='35'>Excluir</img>
+                                </button>
+                            </form>
+                            <form action="{{ route('servicos.atualizarStatus', $servico->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('POST')
+                                <button type="submit">
+                                    <img src='https://img.icons8.com/?size=48&id=63322&format=png' width='35' height='35'>atualizar</img>
+                                </button>
                             </form>
                         </td>
                     </tr>

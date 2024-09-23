@@ -7,11 +7,13 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\OrdemServicoController;
+use App\Http\Controllers\ContatoController;
 
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('pagina_inicial');
+
 Route::get('/token', function () {
     return csrf_token(); 
 });
@@ -47,6 +49,7 @@ Route::post('/servicos', [ServicoController::class, 'store'])->name('servicos.st
 Route::delete('/servicos/{id}', [ServicoController::class, 'destroy'])->name('servicos.destroy');
 Route::put('/servicos/{id}', [ServicoController::class, 'update'])->name('servicos.update');
 Route::get('/servicos/{id}', [ServicoController::class, 'show'])->name('servicos.show');
+Route::post('/servicos/{id}/ativar', [ServicoController::class, 'atualizarStatus'])->name('servicos.atualizarStatus');
 
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
 Route::get('/clientes_salvar', [ClienteController::class, 'create'])->name('clientes.create');
@@ -55,6 +58,7 @@ Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.st
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.update');
 Route::get('/clientes/{id}',[ClienteController:: class,'show'])->name('clientes.show');
+Route::post('/clientes/{id}/ativar', [ClienteController::class, 'atualizarStatus'])->name('clientes.atualizarStatus');
 
 Route::get('/ordemservicos', [OrdemServicoController::class, 'index'])->name('ordem_servicos.index');
 Route::get('/ordemservicos_salvar', [OrdemServicoController::class, 'create'])->name('ordem_servicos.create');
@@ -63,4 +67,8 @@ Route::post('/ordemservicos', [OrdemServicoController::class, 'store'])->name('o
 Route::delete('/ordemservicos/{id}', [OrdemServicoController::class, 'destroy'])->name('ordem_servicos.destroy');
 Route::put('/ordemservicos/{id}', [OrdemServicoController::class, 'update'])->name('ordem_servicos.update');
 Route::get('/ordemservicos/{id}',[OrdemServicoController:: class,'show'])->name('ordem_servicos.show');
+Route::post('/ordemservicos/{id}/ativar', [OrdemServicoController::class, 'atualizarStatus'])->name('ordem_servicos.atualizarStatus');
 
+Route::get('/contato',[ContatoController::class, 'index'])->name('contato.index');
+Route::get('/contato_salvar', [ContatoController::class, 'create'])->name('contato.create');
+Route::post('/contato', [ContatoController::class, 'store'])->name('contato.store');

@@ -6,7 +6,7 @@
     
     </head>
     <body>
-        <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
+        <button><a href= "{{ route('pagina_inicial') }}">Página Inicial</a></button>
         <h1>Categorias</h1>
         <form action="{{ route('categorias.index') }}" method="post">
           @csrf
@@ -32,17 +32,19 @@
                         <th scope="row">{{ $categoria->id }}</th>
                         <td>{{ $categoria->tipo }}</td>
                         <td>
-                            <a href="{{ route('categorias.edit', $categoria->id) }}">
-                            <div>
-                                <img src='https://img.icons8.com/?size=100&id=8rqSU6umQzpk&format=png&color=000000' width='35' height='35'>Editar</img>
-                            </div>
-                            </a>
+                            <button>
+                                <a href="{{ route('categorias.edit', $categoria->id) }}">
+                                    <div>
+                                        <img src='https://img.icons8.com/?size=100&id=8rqSU6umQzpk&format=png&color=000000' width='35' height='35'>Editar</img>
+                                    </div>
+                                </a>
+                            </button>
                             <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">
                                         <img src='https://img.icons8.com/?size=100&id=57061&format=png&color=000000' width='35' height='35'>Excluir</img>
-                                    </button>
+                                </button>
                             </form>
                         </td>
                     </tr>

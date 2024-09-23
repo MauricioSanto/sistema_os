@@ -240,9 +240,9 @@
                        <!-- Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})-->
                        <p>&copy; 2024 - Meu Projeto Laravel. Todos os direitos reservados.</p>
                        <ul>
-                            <li><a href="#">Política de Privacidade</a></li>
-                            <li><a href="#">Termos de Uso</a></li>
-                            <li><a href="#">Contato</a></li>
+                            <li><a href="https://politicaprivacidade.com/">Política de Privacidade</a></li>
+                            <li><a href="{{ route('contato.index') }}">Contato</a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=5586988846226">Chama no Zap</a></li>
                         </ul>
                     </footer>
                 </div>

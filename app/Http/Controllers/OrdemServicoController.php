@@ -122,4 +122,13 @@ class OrdemServicoController extends Controller
         $ordemservicos->delete();
         return redirect()->route('ordem_servicos.index')->with('success', 'Ordem de Serviço removida com sucesso.');
     }
+    
+    public function atualizarStatus (Request $request,$id)
+    {
+        $ordemservicos = OrdemServico::find($id);
+        $ordemservicos->status = true;
+        $ordemservicos->save();
+
+        return redirect()->route('ordem_servicos.index');
+    }
 }

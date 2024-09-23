@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
-        <button><a href= "http://127.0.0.1:8000/">Página Inicial</a></button>
+        <button><a href= "{{ route('pagina_inicial') }}">Página Inicial</a></button>
         <h1>Clientes</h1>
         <form action="{{ route('clientes.store') }}" method="post" enctype="multipart/form-data">
           @csrf
@@ -74,7 +74,14 @@
                                     <button type="submit">
                                         <img src='https://img.icons8.com/?size=100&id=57061&format=png&color=000000' width='35' height='35'>Excluir</img>
                                     </button>
-                                    <!--<button type="submit">Excluir</button>-->
+                                    
+                                </form>
+                                <form action="{{ route('clientes.atualizarStatus', $cliente->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit">
+                                        <img src='https://img.icons8.com/?size=48&id=63322&format=png' width='35' height='35'>atualizar</img>
+                                    </button>
                                 </form>
                             </div>
                         </td>
