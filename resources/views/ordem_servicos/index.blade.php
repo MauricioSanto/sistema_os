@@ -8,7 +8,7 @@
     <body>
         <button><a href= "{{ route('pagina_inicial') }}">Página Inicial</a></button>
         <h1> Ordem de Serviço</h1>
-        <form action="{{ route('ordem_servicos.index') }}" method="post">
+        <form action="{{ route('ordem_servicos.store') }}" method="post">
           @csrf
           <label for="">SERVIÇO: </label>
           <select name="servico_id" id="servico_id">
@@ -41,7 +41,7 @@
             </select>
           <button type="submit">Salvar</button>
         </form>
-        <!--<a href="{{ route('produtos.create') }}">Cadastrar Produto</a>-->
+    
         @if (session('success'))
             <div>{{ session('success') }}</div>
         @endif
@@ -67,8 +67,9 @@
                         <td>{{ $ordemservico->servico ? $ordemservico->servico->tipo : 'N/A' }}</td>
                         <td>{{ $ordemservico->cliente ? $ordemservico->cliente->nome : 'N/A' }}</td>
                         <td>{{ $ordemservico->empresa ? $ordemservico->empresa->razao_social : 'N/A' }}</td>
-                        <td>{{ $ordemservico-> data_inicial }}</td>
-                        <td>{{ $ordemservico-> data_final }}</td>
+                        <td>{{ $ordemservico->data_inicial ? \Carbon\Carbon::parse($ordemservico->data_inicial)->format('d/m/Y') : 'N/A' }}</td>
+                        <td>{{ $ordemservico->data_final ? \Carbon\Carbon::parse($ordemservico->data_final)->format('d/m/Y') : 'N/A' }}</td>
+                        
                         <td>{{ $ordemservico-> valor }}</td>
                         <td>
                             @if ($ordemservico-> status)

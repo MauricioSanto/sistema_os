@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ordemservicos', [OrdemServicoController::class, 'index'])->name('ordem_servicos.index');
     Route::get('/ordemservicos_salvar', [OrdemServicoController::class, 'create'])->name('ordem_servicos.create');
     Route::get('/ordemservicos/editar/{id}', [OrdemServicoController::class, 'edit'])->name('ordem_servicos.edit');
-    Route::post('/ordemservicos', [OrdemServicoController::class, 'store'])->name('ordem_servicos.store');
+    Route::post('/ordemservicos/cadastrar', [OrdemServicoController::class, 'store'])->name('ordem_servicos.store');
     Route::delete('/ordemservicos/{id}', [OrdemServicoController::class, 'destroy'])->name('ordem_servicos.destroy');
     Route::put('/ordemservicos/{id}', [OrdemServicoController::class, 'update'])->name('ordem_servicos.update');
     Route::get('/ordemservicos/{id}',[OrdemServicoController:: class,'show'])->name('ordem_servicos.show');

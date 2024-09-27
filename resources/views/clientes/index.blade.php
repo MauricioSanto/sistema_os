@@ -26,6 +26,7 @@
         @if (session('success'))
             <div>{{ session('success') }}</div>
         @endif
+        <h1>Lista de Clientes</h1>
         <table class="table">
             <thead>
                 <tr>

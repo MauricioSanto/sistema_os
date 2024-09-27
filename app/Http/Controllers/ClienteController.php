@@ -58,15 +58,6 @@ class ClienteController extends Controller
         // Salva o cliente no banco de dados
         $cliente->save();
         
-        /*$foto_camimho = $request->file('foto')->store('fotos', 'public');
-        
-        $cliente = Cliente::create([
-            'nome' => $request->nome,
-            'data_nascimento' => $request->data_nascimento,
-            'foto' => $foto_camimho,
-            'status'=> $request->status
-        ]);*/  
-        
         return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso.');
     }
 

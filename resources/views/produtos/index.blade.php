@@ -39,7 +39,7 @@
                     <tr>
                         <th scope="row">{{ $produto->id }}</th>
                         <td>{{ $produto->nome }}</td>
-                        <td>{{ $produto->valor }}</td>
+                        <td>R${{ $produto->valor }}</td>
                         <td>{{ $produto->descricao }}</td>
                         <td>
                             <button>
